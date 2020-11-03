@@ -1,0 +1,5 @@
+{
+  "app.header": "Modifier <code>{fileName}</code> et enregistrer pour recharger.",
+  "app.content": "Apprendre React",
+  "app.demo.plug": "Démo présentée par {presenterName}"
+}

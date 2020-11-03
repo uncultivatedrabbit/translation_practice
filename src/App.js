@@ -1,18 +1,24 @@
 import './App.css';
 import logo from './logo.svg';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import React, { useContext } from 'react';
-import { Context } from './components/Wrapper';
+import React from 'react';
+import { connect } from 'react-redux';
+import { changeLocale } from './redux';
 
-function App({ date }) {
-  const context = useContext(Context);
+function App({ date, locale, changeLocale }) {
+  console.log(locale);
+  const handleChange = e => {
+    const newLocale = e.target.value;
+    changeLocale(newLocale);
+  };
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <select value={context.locale} onChange={context.selectLang}>
+        <select value={locale} onChange={handleChange}>
           <option value="en-US">English</option>
           <option value="es-MX">Spanish</option>
+          <option value="fr-CA">French</option>
         </select>
         <p>
           <FormattedMessage
@@ -46,5 +52,12 @@ function App({ date }) {
     </div>
   );
 }
+const mapStateToProps = ({ locale }) => {
+  return { locale };
+};
 
-export default App;
+const mapDispatchToProps = {
+  changeLocale,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

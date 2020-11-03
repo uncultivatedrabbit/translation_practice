@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Wrapper from './components/Wrapper';
+import { Provider } from 'react-redux';
+import store from './redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Wrapper>
-      <App date={Date.now()} />
-    </Wrapper>
+    <Provider store={store}>
+      <Wrapper>
+        <App />
+      </Wrapper>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
