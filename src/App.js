@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { changeLocale } from './redux';
 
 function App({ date, locale, changeLocale }) {
-  console.log(locale);
   const handleChange = e => {
     const newLocale = e.target.value;
     changeLocale(newLocale);
